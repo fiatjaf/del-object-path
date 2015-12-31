@@ -1,19 +1,19 @@
-## set-object-path
+## del-object-path
 
-Set given (deep) object path
+Del given (deep) object path
 
-See also: [get-object-path](http://github.com/azer/get-object-path), [change-object](http://github.com/azer/change-object)
+See also: [get-object-path](http://github.com/azer/get-object-path), [set-object-path](http://github.com/azer/set-object-path)
 
 ## Install
 
 ```bash
-$ npm install set-object-path
+$ npm install del-object-path
 ```
 
 ## Usage
 
 ```js
-var set = require('set-object-path')
+var del = require('del-object-path')
 var data = {
   title: 'My Products',
   products: {
@@ -21,7 +21,10 @@ var data = {
   }
 }
 
-set(data, 'products.eggs[0].amount', 200)
+del(data, 'products.eggs[0].amount')
 data.products.eggs[0].amount
-// => 200
+// => undefined
+del(data, 'products.eggs')
+Object.keys(data.products)
+// => ['title']
 ```

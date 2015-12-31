@@ -1,15 +1,14 @@
-module.exports = set;
+module.exports = del;
 
-function set (context, path, value) {
+function del (context, path) {
   if (path.indexOf('.') == -1 && path.indexOf('[') == -1) {
-    context[path] = value;
+    delete context[path];
     return;
   }
 
   var crumbs = parseCrumbs(path);
   var i = -1;
   var len = crumbs.length;
-  var result;
 
   while (++i < len) {
     if (crumbs[i].length == 0) continue;
@@ -23,7 +22,7 @@ function set (context, path, value) {
       continue;
     }
 
-    context[crumbs[i]] = value;
+    delete context[crumbs[i]];
   }
 }
 

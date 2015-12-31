@@ -1,7 +1,7 @@
 {
-  "name": "set-object-path",
-  "version": "2.0.0",
-  "description": "Set given (deep) object path",
+  "name": "del-object-path",
+  "version": "0.1.0",
+  "description": "Delete given (deep) object path",
   "main": "index.js",
   "scripts": {
     "test": "node test"
@@ -10,13 +10,14 @@
     "object",
     "path",
     "change",
-    "set object path"
+    "remove",
+    "set"
   ],
   "repository": {
-    "url": "git@github.com:azer/set-object-path.git",
+    "url": "git@github.com:fiatjaf/del-object-path.git",
     "type": "git"
   },
-  "author": "azer",
+  "author": "fiatjaf",
   "license": "BSD",
   "devDependencies": {
     "prova": "^2.1.2"

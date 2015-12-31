@@ -1,7 +1,7 @@
 var test = require("prova");
-var set = require("./");
+var del = require("./");
 
-test('setting a simple path', function (t) {
+test('deleting a simple path', function (t) {
   var obj = {
     foo: 123,
     bar: 456,
@@ -9,17 +9,17 @@ test('setting a simple path', function (t) {
     yo: 'lo'
   };
 
-  set(obj, 'foo', 1230);
-  set(obj, 'bar', 4560);
-  set(obj, 'yo', 'yolo');
+  del(obj, 'foo');
+  del(obj, 'bar');
+  del(obj, 'yo');
 
   t.plan(3);
-  t.equal(obj.foo, 1230);
-  t.equal(obj.bar, 4560);
-  t.equal(obj.yo, 'yolo');
+  t.equal(obj.foo, undefined);
+  t.equal(obj.bar, undefined);
+  t.equal(obj.yo, undefined);
 });
 
-test('setting a deep path', function (t) {
+test('deleting a deep path', function (t) {
   var data = {
     title: 'My Products',
     products: {
@@ -30,21 +30,21 @@ test('setting a deep path', function (t) {
     }
   };
 
-  set(data, 'products.eggs[0].kind', 'bird');
-  set(data, 'products.eggs[0].amount', 250);
-  set(data, 'products.veggies.tomatoes', ['cherry']);
-  set(data, 'products.veggies.potatoes', 210);
-  set(data, 'products.oranges[0]', 'finike');
+  del(data, 'products.eggs[0].kind');
+  del(data, 'products.eggs[0].amount');
+  del(data, 'products.veggies.tomatoes');
+  del(data, 'products.veggies.potatoes');
+  del(data, 'products.oranges[0]');
 
   t.plan(10);
   t.equal(data.title, 'My Products');
-  t.equal(data.products.eggs[0].kind, 'bird');
-  t.equal(data.products.eggs[0].amount, 250);
+  t.equal(data.products.eggs[0].kind, undefined);
+  t.equal(data.products.eggs[0].amount, undefined);
   t.equal(data.products.eggs[1].kind, 'brown');
   t.equal(data.products.eggs[1].amount, 200);
   t.equal(data.products.apples, 789);
   t.equal(data.products.bananas, 150);
-  t.equal(data.products.veggies.tomatoes[0], 'cherry');
-  t.equal(data.products.veggies.potatoes, 210);
-  t.equal(data.products.oranges[0], 'finike');
+  t.equal(data.products.veggies.tomatoes, undefined);
+  t.equal(data.products.veggies.potatoes, undefined);
+  t.equal(data.products.oranges[0], undefined);
 });
